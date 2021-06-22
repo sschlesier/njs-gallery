@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import { getGalleries } from '../lib/dynamic'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,9 +12,20 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <ul>
+          { props.galleries.map( (name) => (
+            <li>{name}</li>
+          ))}
+        </ul>
       </main>
 
       <footer className={styles.footer}>A Gallery</footer>
     </div>
   )
+}
+
+export async function getStaticProps(context) {
+  return {
+    props: getGalleries()
+  }
 }
