@@ -13,8 +13,8 @@ export default function Home(props) {
 
       <main className={styles.main}>
         <ul>
-          { props.galleries.map( (name) => (
-            <li>{name}</li>
+          { props.galleries.map( (gallery) => (
+            <li>{gallery.title}</li>
           ))}
         </ul>
       </main>
