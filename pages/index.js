@@ -14,7 +14,10 @@ export default function Home(props) {
       <main className={styles.main}>
         <ul>
           { props.galleries.map( (gallery) => (
-            <li>{gallery.title}</li>
+            <li>
+              {gallery.title}
+              <img href={gallery.thumbnail} />
+            </li>
           ))}
         </ul>
       </main>
