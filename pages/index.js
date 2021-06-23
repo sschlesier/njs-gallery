@@ -28,7 +28,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps(context) {
-  return {
-    props: getGalleries()
-  }
+  const props = {props: await getGalleries()};
+  console.log(JSON.stringify(props));
+  return props;
 }
