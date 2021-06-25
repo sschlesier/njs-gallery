@@ -16,7 +16,7 @@ export default function Home(props) {
           { props.galleries.map( (gallery) => (
             <li>
               {gallery.title}
-              <img href={gallery.thumbnail} />
+              <img src={gallery.thumbnail} />
             </li>
           ))}
         </ul>
