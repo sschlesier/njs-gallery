@@ -1,5 +1,4 @@
 .outer {
-  columns: 3;
   width: 100%;
   column-gap: 0;
 }

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { getGalleries } from '../lib/dynamic'
+import { getGalleries, getGlobalConfig } from '../lib/dynamic'
 import styles from '../styles/Home.module.css'
 
 export default function Home(props) {
@@ -12,7 +12,7 @@ export default function Home(props) {
       </Head>
 
       <main>
-        <div className={styles.outer}>
+        <div className={styles.outer} style={{columns: props.columns}}>
           { props.galleries.map( (gallery) => (
             <article className={styles.inner} key={gallery.title}>
               <img
@@ -30,7 +30,13 @@ export default function Home(props) {
 }
 
 export async function getStaticProps(context) {
-  const props = {props: await getGalleries()};
-  // console.log(JSON.stringify(props));
-  return props;
+  var globalConfig = await getGlobalConfig();
+  var galleries = await getGalleries();
+
+  const obj = {props: {
+      columns: 2,
+      ...galleries,
+      ...globalConfig}}
+  // console.log(JSON.stringify(obj.props.columns));
+  return obj;
 }
