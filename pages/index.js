@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { getGalleries, getGlobalConfig } from '../lib/dynamic'
 import styles from '../styles/Home.module.css'
 
@@ -15,11 +16,13 @@ export default function Home(props) {
         <div className={styles.outer} style={{columns: props.columns}}>
           { props.galleries.map( (gallery) => (
             <article className={styles.inner} key={gallery.title}>
-              <img
-              src={gallery.thumbnail}
-              alt={gallery.title}
-              width="180"
-              height="180" />
+              <a href={gallery.webPath}>
+                <img
+                src={gallery.thumbnail}
+                alt={gallery.title}
+                width="180"
+                height="180" />
+              </a>
             <h2>{gallery.title}</h2>
             </article>
           ))}
