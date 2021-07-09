@@ -18,10 +18,10 @@ export default function Home(props) {
             <article className={styles.inner} key={gallery.title}>
               <a href={gallery.webPath}>
                 <img
-                src={gallery.thumbnail}
-                alt={gallery.title}
-                width="180"
-                height="180" />
+                  src={gallery.thumbnail}
+                  alt={gallery.title}
+                  width="180"
+                  height="180" />
               </a>
             <h2>{gallery.title}</h2>
             </article>

@@ -20,10 +20,10 @@ export default function Gallery(props) {
           { props.images.map( (imagePath) => (
             <article className={styles.inner} key={imagePath}>
               <img
-              src={imagePath}
-              alt={imagePath}
-              width="180"
-              height="180" />
+                src={imagePath}
+                alt={imagePath}
+                width="180"
+                height="180" />
             <h2>{imagePath}</h2>
             </article>
           ))}
