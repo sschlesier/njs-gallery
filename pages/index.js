@@ -17,13 +17,15 @@ export default function Home(props) {
         <div className={styles.outer} style={{columns: props.columns}}>
           { props.galleries.map( (gallery) => (
             <article className={styles.inner} key={gallery.title}>
-              <a href={gallery.webPath}> {/* todo make Link work */}
-                <img
-                  src={gallery.thumbnail}
-                  alt={gallery.title}
-                  width="180"
-                  height="180" /> {/* todo figure out optimized images for dynamic and static sites */ }
-              </a>
+              <Link href={gallery.webPath} > 
+                  <a>
+                    <img
+                      src={gallery.thumbnail}
+                      alt={gallery.title}
+                      width="180"
+                      height="180" />
+                  </a>
+              </Link>
             <h2>{gallery.title}</h2>
             </article>
           ))}
