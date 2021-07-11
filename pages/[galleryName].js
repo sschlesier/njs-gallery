@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { getImages } from '../lib/dynamic'
+import { getGalleries, getImages } from '../lib/dynamic'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
 
@@ -45,5 +45,10 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  return { paths: ['/birds'], fallback: false };
+  const obj = await getGalleries(); //todo cleanup obj here
+  const paths = obj.galleries.map( g => {
+    return g.webPath;
+  });
+
+  return { paths: paths, fallback: false };
 }
