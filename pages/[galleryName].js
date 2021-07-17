@@ -1,3 +1,4 @@
+import path from 'path'
 import Head from 'next/head'
 import { getGalleries, getImages } from '../lib/dynamic'
 import styles from '../styles/Home.module.css'
@@ -17,14 +18,14 @@ export default function Gallery(props) {
 
       <main>
         <div className={styles.outer} style={{columns: props.columns}}>
-          { props.images.map( (imagePath) => (
-            <article className={styles.inner} key={imagePath}>
+          { props.galleryItems.map( (item) => (
+            <article className={styles.inner} key={item.diskPath}>
               <img
-                src={imagePath}
-                alt={imagePath}
+                src={item.diskPath}
+                alt={item.title}
                 width="180"
                 height="180" />
-            <h2>{imagePath}</h2>
+            <h2>{item.title}</h2>
             </article>
           ))}
         </div>
@@ -36,9 +37,16 @@ export default function Gallery(props) {
 export async function getStaticProps(context) {
   const images = await getImages(context.params.galleryName);
 
+  const galleryItems = images.map( diskPath => {
+    return {
+      diskPath,
+      title: path.parse(diskPath).name,
+    };
+  });
+
   const obj = {props: {
       columns: 2,
-      images: images,
+      galleryItems,
       }}
   // console.log(JSON.stringify(obj));
   return obj;

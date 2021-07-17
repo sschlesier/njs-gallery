@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { getGalleries, getGlobalConfig } from '../lib/dynamic'
 import styles from '../styles/Home.module.css'
-//todo figure out static export
+//todo figure out static export of next.js
 
 export default function Home(props) {
   return (
