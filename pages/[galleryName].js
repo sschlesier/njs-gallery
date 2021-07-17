@@ -1,5 +1,6 @@
 import path from 'path'
 import Head from 'next/head'
+import humanizeString from 'humanize-string'
 import { getGalleries, getImages } from '../lib/dynamic'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
@@ -40,7 +41,7 @@ export async function getStaticProps(context) {
   const galleryItems = images.map( diskPath => {
     return {
       diskPath,
-      title: path.parse(diskPath).name,
+      title: humanizeString(path.parse(diskPath).name),
     };
   });
 

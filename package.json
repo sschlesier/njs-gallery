@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "graceful-fs": "^4.2.6",
+    "humanize-string": "^2.1.0",
     "js-yaml": "^3.14.1",
     "mmmagic": "^0.5.3",
     "next": "11.0.0",
